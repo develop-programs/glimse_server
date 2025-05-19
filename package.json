@@ -1,7 +1,7 @@
 {
-  "name": "glimse_server",
+  "name": "glimpse_server",
   "version": "1.0.0",
-  "description": "WebSocket server with login and room management",
+  "description": "WebSocket server for Glimpse video conferencing app",
   "main": "src/index.js",
   "type": "module",
   "scripts": {

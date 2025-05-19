@@ -6,9 +6,11 @@ import ChatHandler from './ws/chatHandler.js';
 // Load environment variables
 config();
 
-// Define ports
+// Define ports - Use a single port for both HTTP and WebSocket
 const port = process.env.PORT || 3000;
-const wsPort = process.env.WS_PORT || 3001;
+
+// Define a default WebSocket port
+const wsPort = process.env.WS_PORT || 8081;
 
 // Main function to start the servers
 async function startServer() {
@@ -17,10 +19,10 @@ async function startServer() {
     await connectDB();
     console.log('MongoDB connected successfully');
     
-    // Initialize WebSocket handler
+    // Initialize WebSocket handler with the WebSocket port
     const chatHandler = new ChatHandler(wsPort);
     chatHandler.initialize();
-    console.log(`WebSocket server running at ws://localhost:${wsPort}`);
+    console.log(`WebSocket server is running on port ${wsPort}`);
     
     // Create and start Fastify app
     const app = await createApp();

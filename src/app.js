@@ -21,6 +21,11 @@ const createApp = async () => {
     methods: ['GET', 'POST', 'PUT', 'DELETE']
   });
   
+  // Add a health check endpoint
+  app.get('/api/health', async (request, reply) => {
+    return { status: 'ok', timestamp: new Date().toISOString() };
+  });
+  
   // Register routes
   app.register(authRoutes, { prefix: '/api/auth' });
   app.register(roomRoutes, { prefix: '/api/rooms' });

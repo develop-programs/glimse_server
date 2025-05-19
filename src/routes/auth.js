@@ -65,8 +65,13 @@ export default async function (fastify, opts) {
     try {
       const { username, password } = request.body;
       
-      // Find user by username
-      const user = await User.findOne({ username });
+      // Find user by username or email
+      const user = await User.findOne({
+        $or: [
+          { username: username },
+          { email: username }
+        ]
+      });
       
       if (!user) {
         return reply.code(401).send({ 

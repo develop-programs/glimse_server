@@ -1,15 +1,16 @@
-# Glimse Chat Server
+# Glimpse Server
 
-A real-time chat application server with WebSocket support, user authentication, and room management.
+A real-time video conferencing server with WebSocket support, user authentication, and room management.
 
 ## Features
 
 - 👤 User authentication (signup/login) using JWT
 - 🔑 Secure password storage with bcrypt
-- 🏠 Create and manage chat rooms
+- 🏠 Create and manage conference rooms
 - 💬 Real-time messaging with WebSocket
+- 🎥 WebRTC signaling for video conferencing
 - 📜 Message history and pagination
-- 📱 RESTful API with Fastify
+- 📱 RESTful API with Express
 - 🗄️ MongoDB data persistence
 
 ## Prerequisites

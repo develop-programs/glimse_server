@@ -6,8 +6,8 @@ import Message from '../models/Message.js';
 import mongoose from 'mongoose';
 
 class ChatHandler {
-  constructor(wsPort) {
-    this.wsPort = wsPort;
+  constructor(port) {
+    this.port = port;
     this.wss = null;
     this.activeConnections = new Map(); // userId -> ws connection
   }
@@ -23,7 +23,9 @@ class ChatHandler {
 
   // Initialize WebSocket server
   initialize() {
-    this.wss = new WebSocketServer({ port: this.wsPort });
+    this.wss = new WebSocketServer({ port: this.port });
+    
+    console.log(`WebSocket server is running on port ${this.port}`);
     
     this.wss.on('connection', (ws) => {
       let userId = null;
@@ -90,7 +92,7 @@ class ChatHandler {
       });
     });
 
-    console.log(`WebSocket server running on port ${this.wsPort}`);
+    console.log(`WebSocket server running on port ${this.port}`);
   }
 
   // Parse JSON messages safely
